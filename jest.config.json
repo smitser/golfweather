@@ -1,5 +1,6 @@
 {
   "verbose": true,
+  "testMatch": ["**/?(*.)(spec).js?(x)"],
   "moduleNameMapper": {
     "\\.(jpg|jpeg|gif|eot|otf|webp|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga|pdf)$": "<rootDir>/src/__mocks__/fileMock.js",
     "\\.(css|scss)$": "<rootDir>/src/__mocks__/styleMock.js",
@@ -11,5 +12,8 @@
     "^.+\\.(js|jsx)?$": "babel-jest",
     "^.+\\.svg$": "<rootDir>/src/__mocks__/filetransformer.js",
     "\\.(png)$": "jest-transform-file"
-  }
+  },
+  "setupFilesAfterEnv": ["<rootDir>/jest.setup.js"],
+  "testEnvironment": "jest-environment-jsdom-fifteen",
+  "watchPlugins": ["jest-watch-typeahead/filename", "jest-watch-typeahead/testname"]
 }

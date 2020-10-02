@@ -8,18 +8,23 @@
     "@babel/plugin-transform-runtime": "^7.11.5",
     "@babel/preset-env": "^7.11.5",
     "@babel/preset-react": "^7.10.4",
-    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.0.4",
     "@testing-library/user-event": "^7.1.2",
+    "jest-environment-jsdom-fifteen": "^1.0.2",
     "jest-transform-file": "^1.1.1",
+    "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.3"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "jest"
+    "start": "npm run watch:css && react-scripts start",
+    "build": "npm run build:css && react-scripts build",
+    "test": "jest --config=jest.config.json",
+    "build:css": "postcss src/css/tailwind.scss -o src/css/main.scss",
+    "watch:css": "postcss src/css/tailwind.scss -o src/css/main.scss",
+    "lint": "eslint \"src/**/*.{js,jsx}\""
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -38,8 +43,11 @@
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
+    "autoprefixer": "^9.0.0",
     "babel-core": "^7.0.0-0",
-    "babel-jest": "^26.3.0",
-    "jest": "^26.4.2"
+    "babel-jest": "^24.9.0",
+    "jest": "^24.9.0",
+    "postcss-cli": "^8.0.0",
+    "tailwindcss": "^1.8.10"
   }
 }
